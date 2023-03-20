@@ -5,16 +5,16 @@ import { TurnedInNot } from "@mui/icons-material"
 import { setActiveNote } from "../../store/journal/journalSlice"
 
 
-export const SideBarItem=({title,body,id,date,imagUrls=[]})=>{
+export const SideBarItem=({title='',body,id,date,imagUrls=[]})=>{
 
     const dispatch =useDispatch()
     const onClickNote=()=>{
         dispatch(setActiveNote(title,body,id,date,imagUrls))
     }
     const newTitle=useMemo(()=>{
-        return (title.length>17)
-            ? title.substring(0,17)+'...'
-            :title 
+        return title.length > 17
+            ? title.substring(0,17) + '...'
+            : title 
 
     },[title])
 

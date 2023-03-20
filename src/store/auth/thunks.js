@@ -3,7 +3,7 @@ import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, 
 import { clearNotesLogout } from '../journal'
 import {checkingCredentials, login, logout} from './'
 
-export const checkingAuthentication=({email,password})=>{
+export const checkingAuthentication=()=>{
     return async (dispatch)=>{
 
         dispatch(checkingCredentials())
@@ -17,9 +17,9 @@ export const startGoogleSignIn = () => {
 
         const result =await singInWithGoogle()
 
-        if(!result.ok){
-            return (logout(result.errorMessage))
-        }
+        if ( !result.ok ) return dispatch( logout( result.errorMessage ) );
+
+        
         dispatch(login(result))
     }
 }
@@ -30,8 +30,7 @@ export const startCreatingUserWithEmailPassword = ({ email, password, displayNam
 
         dispatch( checkingCredentials() );
     
-        const result = await registerUserWithEmailPassword({ email, password });
-        console.log(result);
+        const result = await registerUserWithEmailPassword({ email, password,displayName });
     
         if ( !result.ok ) return dispatch( logout( result ) );
         dispatch( login( result ));
