@@ -5,6 +5,6 @@ import { journalSlice } from './journal'
 export default configureStore({
   reducer: {
     auth:authSlice.reducer,
-    journal:journalSlice,
+    journal:journalSlice.reducer,
   },
 })
