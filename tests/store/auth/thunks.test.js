@@ -1,6 +1,6 @@
 import { loginWithEmailPassword, logoutFirebase, singInWithGoogle } from "../../../src/firebase/providers"
 import { checkingCredentials,login, logout } from "../../../src/store/auth"
-import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword, startLogout } from "../../../src/store/auth/thunks"
+import { checkingAuthentication, startCreatingUserWithEmailPassword, startGoogleSignIn, startLoginWithEmailPassword, startLogout } from "../../../src/store/auth/thunks"
 import { clearNotesLogout } from "../../../src/store/journal"
 import { demoUser } from "../../fixtures/authFixteres"
 
@@ -78,8 +78,5 @@ describe("test en thunks",()=>{
         expect( dispatch ).toHaveBeenCalledWith( clearNotesLogout() );
         expect( dispatch ).toHaveBeenCalledWith( logout() );   
     });
-
-    test("startCreatingUserWithEmailPassword debde de llamar registerUserWithEmailPassword,checkingCredentials,login",()=>{
-        
-    })
+ 
 })
